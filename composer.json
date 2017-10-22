@@ -1,0 +1,16 @@
+{
+	"require" : {
+		"silex/silex" : "^1.3",
+		"twig/twig" : "^1.33",
+		"symfony/twig-bridge" : "^3.3",
+		"twbs/bootstrap" : "^3.3",
+		"components/jquery" : "^3.2"
+		},
+	"autoload" : {
+		"psr-4" : {
+			"Model\\" : "model"
+		}
+	},
+	"name" : "Appli agence de voyage TP4"
+}
+
