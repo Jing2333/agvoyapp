@@ -24,9 +24,7 @@ $app->get ( '',
 	function () use ($app)
 	{
 
-		return $app ['twig']->render ( 'menuslist.html.twig', [
-				'menuslist' => $menuslist
-		] );
+		return $app ['twig']->render ( 'menuslist.html.twig');
 }
 )->bind ( 'menulist' );
 
@@ -55,7 +53,7 @@ $app->get ( '/admin/circuit',
 )->bind ( 'circuitlistadmin' );
 
 // circuitshow : affiche les détails d'un circuit
-$app->get ( '/circuit/{id}',
+$app->get ( '/user/circuit/{id}',
 	function ($id) use ($app)
 	{
 		$circuit = get_circuit_by_id ( $id );
@@ -69,6 +67,21 @@ $app->get ( '/circuit/{id}',
 			] );
 	}
 )->bind ( 'circuitshow' );
+
+$app->get ( '/admin/circuit/{id}',
+	function ($id) use ($app)
+	{
+		$circuit = get_circuit_by_id ( $id );
+		// print_r($circuit);
+		$programmations = get_programmations_by_circuit_id ( $id );
+		//$circuit ['programmations'] = $programmations;
+
+		return $app ['twig']->render ( 'circuitshowadmin.html.twig', [
+				'id' => $id,
+				'circuit' => $circuit
+			] );
+	}
+)->bind ( 'circuitshowadmin' );
 
 // programmationlist : liste tous les circuits programmés
 $app->get ( '/programmation',
