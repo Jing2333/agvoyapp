@@ -1,0 +1,69 @@
+{# templates/circuitshow.html.twig #}
+{% extends "baselayout.html.twig" %}
+{#
+  {{ dump(circuit) }}
+#}
+{% block body %}
+<head>
+  <title>Details for circuit {{ id }}</title>
+</head>
+<body>
+  <h1>{{ circuit.description }}</h1>
+
+	<h2>Détails</h2>
+
+			<p>Description: {{ circuit.description }}</p>
+
+			<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j.
+         de voyage à travers le {{ circuit.paysDepart }}, pour terminer à
+         {{ circuit.villeArrivee }}.</p>
+
+         	<p>Etapes du voyage : </p>
+
+        <table>
+             <thead>
+                 <tr>
+                     <th>Ville</th>
+                     <th>Jour</th>
+                 </tr>
+               </thead>
+
+            {% for etape in circuit.etapes %}
+
+               <tr>
+                  <td width="400">{{ etape.villeEtape }}</td>
+                  <td width="400">{{ etape.nombreJours }}</td>
+               </tr>
+
+            {% endfor %}
+
+        </table>
+
+
+               <br><br><br>
+
+
+  <h2>Programmations de ce circuit</h2>
+  {# <pre>{{ dump(circuit) }}</pre> #}
+     	<table>
+     	 		<thead>
+     					<tr>
+     				    	<th>Date de départ</th>
+     						  <th>Nombre de personnes</th>
+     						  <th>Prix</th>
+     					</tr>
+     				</thead>
+      {% if circuit.programmations is not empty %}
+     		{%  for programmation in circuit.programmations %}
+     			<tr>
+     			   <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
+     			   <td>{{ programmation.nombrePersonnes }}</td>
+     			   <td>{{ programmation.prix }} euros</td>
+     			</tr>
+     		{% endfor %}
+     		</table>
+    {% else %}
+    <p>Désolé : pas encore de programmations pour ce circuit.</p>
+    {% endif %}
+                   <br><br><br>
+{% endblock %}

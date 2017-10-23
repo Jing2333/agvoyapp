@@ -1,0 +1,30 @@
+{# templates/circuitslist.html.twig #}
+
+{% extends "baselayout.html.twig" %}
+
+{% block title %}{{ parent() }} - Circuits list{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-shadow text-white">List of circuits</h1>
+    {% if circuitslist is not empty %}
+        <ul><nav>
+        {# Loop through list and creeate the list of circuit items. #}
+        {% for circuit in circuitslist %}
+            <li>
+							{% if circuit.programmations is not empty %}
+                {%  for programmation in circuit.programmations %}
+                  {% if programmation.dateDepart|date("Y-m-d") > "now"|date("Y-m-d") %}
+          			      <a href="{{ path('circuitshow', { 'id' : circuit.id }) }}" class="text-white text-expanded">{{ circuit.description }}</a>
+							    {% endif %}
+                {% endfor %}
+              {% endif %}
+            </li>
+        {% endfor %}
+        </nav>
+        </ul>
+    {% else %}
+        <p class="text-white text-expanded">Sorry, you don't have any circuits yet!</p>
+    {% endif %}
+</div>
+{% endblock %} {# body #}

@@ -1,0 +1,26 @@
+{# templates/back_office/circuitslist.html.twig #}
+
+{% extends "baselayout.html.twig" %}
+
+{% block title %}{{ parent() }} - Circuits list{% endblock %}
+
+{% block body %}
+
+
+    <h1>List of circuits</h1>
+    {% if circuitslist is not empty %}
+        <p>Here are all your circuits:</p>
+        <ul><nav>
+        {# Loop through list and creeate the list of circuit items. #}
+        {% for circuit in circuitslist %}
+            <li>
+          			<a href="{{ path('circuitshowadmin', { 'id' : circuit.id }) }}">{{ circuit.description }}</a>
+            </li>
+        {% endfor %}
+        </nav>
+        </ul>
+    {% else %}
+        <p>Sorry, you don't have any circuits yet!</p>
+    {% endif %}
+</div>
+{% endblock %} {# body #}
