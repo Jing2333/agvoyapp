@@ -20,7 +20,7 @@
 
          	<p>Etapes du voyage : </p>
 
-        <table cellpadding="10">
+        <table>
              <thead>
                  <tr>
                      <th>Ville</th>
@@ -31,8 +31,8 @@
             {% for etape in circuit.etapes %}
 
                <tr>
-                  <td>{{ etape.villeEtape }}</td>
-                  <td>{{ etape.nombreJours }}</td>
+                  <td width="400">{{ etape.villeEtape }}</td>
+                  <td width="400">{{ etape.nombreJours }}</td>
                </tr>
 
             {% endfor %}
@@ -40,7 +40,7 @@
         </table>
 
 
-
+               <br><br><br>
 
 
   <h2>Programmations de ce circuit</h2>
@@ -65,4 +65,5 @@
     {% else %}
     <p>Désolé : pas encore de programmations pour ce circuit.</p>
     {% endif %}
+                   <br><br><br>
 {% endblock %}
