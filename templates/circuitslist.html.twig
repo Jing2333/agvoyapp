@@ -13,8 +13,17 @@
         {% for circuit in circuitslist %}
             <li>
 							{% if circuit.programmations is not empty %}
+<<<<<<< HEAD
+                {%  for programmation in circuit.programmations %}
+                  {% if programmation.dateDepart|date("Y-m-d") > "now"|date("Y-m-d") %}
+          			      <a href="{{ path('circuitshow', { 'id' : circuit.id }) }}" class="text-white text-expanded">{{ circuit.description }}</a>
+							    {% endif %}
+                {% endfor %}
+              {% endif %}
+=======
           			<a href="{{ path('circuitshow', { 'id' : circuit.id }) }}" class="text-white text-expanded">{{ circuit.description }}</a>
 							{% endif %}
+>>>>>>> 9740cce5cf175efff0ce4809249ac0fb1624d3b1
             </li>
         {% endfor %}
         </nav>
